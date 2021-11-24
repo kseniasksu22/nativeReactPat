@@ -3,8 +3,6 @@ import {FlatList, StyleSheet} from 'react-native';
 import {ListItem, Avatar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-Icon.loadFont();
-
 const PicsLayout = ({data, addItem, onRefresh}) => {
   return (
     <FlatList

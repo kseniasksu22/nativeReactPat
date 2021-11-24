@@ -1,6 +1,5 @@
 const initialState = {
   list: [],
-  renderLikedList: [],
   likedPhotos: [],
 };
 
@@ -8,7 +7,7 @@ console.log(initialState.likedPhotos, 'likedPhotos');
 
 export const SET_PHOTOS = 'SET_PHOTOS';
 export const SET_FAVORITES = 'SET_FAVORITES';
-export const SET_LIKED_PHOTOS = 'SET_LIKED_PHOTOS';
+export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -27,6 +26,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         likedPhotos: [...state.likedPhotos, action.payload],
+      };
+    }
+    case 'REMOVE_FROM_FAVORITES': {
+      return {
+        ...state,
+        likedPhotos: [...state.likedPhotos.filter(el => el.id !== action.payload)],
       };
     }
 

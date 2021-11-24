@@ -5,6 +5,9 @@ import Navigator from './src/navigation';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor} from './src/redux/store';
 import store from './src/redux/store';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+Icon.loadFont();
 
 const App = function () {
   return (

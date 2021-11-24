@@ -1,7 +1,6 @@
 import {SET_PHOTOS} from './photosReducer';
 import {SET_FAVORITES} from './photosReducer';
-import {SET_LIKED_PHOTOS} from './photosReducer';
-
+import {REMOVE_FROM_FAVORITES} from './photosReducer';
 export const setPhotos = photos => {
   return {
     type: SET_PHOTOS,
@@ -16,9 +15,9 @@ export const setFavorites = photos => {
   };
 };
 
-export const setLikedPictures = photos => {
+export const deleteFavorites = id => {
   return {
-    type: SET_LIKED_PHOTOS,
-    payload: photos,
+    type: REMOVE_FROM_FAVORITES,
+    payload: id,
   };
 };

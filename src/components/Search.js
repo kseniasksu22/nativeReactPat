@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#909090',
     borderBottomWidth: 0.3,
     paddingLeft: 10,
-    color: 'greyvf',
+    color: 'grey',
   },
   searchContainer__button: {
     width: 50,

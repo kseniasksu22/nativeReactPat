@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import PicsLayout from '../components/PicsLayout';
@@ -21,12 +21,22 @@ const Pictures = () => {
 
   React.useEffect(() => {
     getPictures();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addItem = data => {
     return dispatch(setFavorites({...data, liked: true}));
   };
+
+  //const filter = data => {
+  // if ((data.liked = true)) {
+  //  }
+  // };
+
+  //function deleteItem(key) {
+  //=> {
+  // return listLiked.filter(el => el.key !== key);
+  //  });
+  //}
 
   const findPicture = (items, text) => {
     if (!text) {
@@ -42,6 +52,7 @@ const Pictures = () => {
     photosList.map(obj => savedList.find(o => o.id === obj.id) || obj),
     inputText,
   );
+
   return (
     <View>
       <Search inputText={inputText} setInputText={setInputText} />

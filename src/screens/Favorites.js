@@ -1,18 +1,17 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {useSelector} from 'react-redux';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {deleteFavorites} from '../redux/actions';
 import PicsLayout from '../components/PicsLayout';
 const Favorites = () => {
-  const savedList = useSelector(state => state.likedPhotos);
-  console.log(savedList);
+  const dispatch = useDispatch();
+  const savedPhotos = useSelector(state => state.likedPhotos);
+
   const removeItem = data => {
-    savedList.filter(element => {
-      return element.id !== data.id;
-    });
+    let id = data.id;
+    return dispatch(deleteFavorites(id));
   };
 
-  const savedPhotos = useSelector(state => state.likedPhotos);
   return (
     <View>
       <PicsLayout data={savedPhotos} addItem={removeItem} />
