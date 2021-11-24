@@ -1,14 +1,18 @@
 import React from 'react';
-import {View, TextInput, Pressable, StyleSheet} from 'react-native';
+import {View, TextInput, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Search = () => {
+const Search = ({inputText, setInputText}) => {
+  console.log(inputText);
   return (
     <View style={styles.searchContainer}>
-      <TextInput style={styles.searchContainer__input} />
-      <Pressable onPress={() => console.log('lol')} style={styles.searchContainer__button}>
-        <Icon name="search" color="blue" size={25} />
-      </Pressable>
+      <Icon name="search" color="blue" size={25} />
+      <TextInput
+        placeholder={'sarch'}
+        style={styles.searchContainer__input}
+        onChangeText={text => setInputText(text)}
+        value={inputText}
+      />
     </View>
   );
 };
@@ -17,13 +21,13 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     padding: 20,
-    justifyContent: 'space-between',
   },
   searchContainer__input: {
-    width: 280,
+    flex: 1,
     borderBottomColor: '#909090',
     borderBottomWidth: 0.3,
-    padding: 2,
+    paddingLeft: 10,
+    color: 'greyvf',
   },
   searchContainer__button: {
     width: 50,
