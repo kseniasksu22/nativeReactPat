@@ -3,12 +3,12 @@ import {FlatList, StyleSheet} from 'react-native';
 import {ListItem, Avatar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const PicsLayout = ({data, addItem, onRefresh}) => {
+const PicsLayout = ({data, addItem, onRefresh, onNavigate}) => {
   return (
     <FlatList
       data={data}
       renderItem={({item}) => (
-        <ListItem style={styles.picsLayoutContainer}>
+        <ListItem style={styles.picsLayoutContainer} onPress={() => onNavigate(item)}>
           <Avatar style={styles.picsLayoutContainer__image} source={{uri: item.url}} />
           <ListItem.Content>
             <ListItem.Title style={styles.picsLayoutContainer__caption}>

@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteFavorites} from '../redux/actions';
 import PicsLayout from '../components/PicsLayout';
-const Favorites = () => {
+const Favorites = ({navigation}) => {
   const dispatch = useDispatch();
   const savedPhotos = useSelector(state => state.likedPhotos);
 
@@ -12,9 +12,13 @@ const Favorites = () => {
     return dispatch(deleteFavorites(id));
   };
 
+  const navigateToInfo = data => {
+    return navigation.navigate('Details', {data});
+  };
+
   return (
     <View>
-      <PicsLayout data={savedPhotos} addItem={removeItem} />
+      <PicsLayout data={savedPhotos} addItem={removeItem} onNavigate={navigateToInfo} />
     </View>
   );
 };

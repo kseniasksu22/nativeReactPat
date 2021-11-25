@@ -3,8 +3,6 @@ const initialState = {
   likedPhotos: [],
 };
 
-console.log(initialState.likedPhotos, 'likedPhotos');
-
 export const SET_PHOTOS = 'SET_PHOTOS';
 export const SET_FAVORITES = 'SET_FAVORITES';
 export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
@@ -17,11 +15,7 @@ export default (state = initialState, action) => {
         list: action.payload,
       };
     }
-    case 'SET_LIKED_PHOTOS': {
-      return {
-        ...state,
-      };
-    }
+
     case 'SET_FAVORITES': {
       return {
         ...state,

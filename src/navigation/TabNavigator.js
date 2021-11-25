@@ -21,12 +21,14 @@ export default () => (
         const icons = {
           Pictures: 'collections',
           Favorites: 'bookmarks',
+          Details: 'info',
         };
 
         return <Icon name={icons[route.name]} color={color} size={size} />;
       },
     })}>
     <Tab.Screen name="Pictures" component={Pictures} />
+
     <Tab.Screen name="Favorites" component={Favorites} />
   </Tab.Navigator>
 );

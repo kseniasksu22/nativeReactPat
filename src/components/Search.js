@@ -3,7 +3,6 @@ import {View, TextInput, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Search = ({inputText, setInputText}) => {
-  console.log(inputText);
   return (
     <View style={styles.searchContainer}>
       <Icon name="search" color="blue" size={25} />
