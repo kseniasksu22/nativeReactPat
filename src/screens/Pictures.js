@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import PicsLayout from '../components/PicsLayout';
 import {setPhotos, setFavorites, deleteFavorites} from '../redux/actions';
@@ -10,9 +10,11 @@ const Pictures = ({navigation}) => {
   const dispatch = useDispatch();
   const photosList = useSelector(state => state.list);
   const savedList = useSelector(state => state.likedPhotos);
-
+  const [albumIndex, setAlbumIndex] = React.useState(1);
+  const [isLoading, setIsLoading] = React.useState(true);
+  console.log(albumIndex);
   const getPictures = () => {
-    fetch('https://jsonplaceholder.typicode.com/photos?albumId=1')
+    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumIndex}`)
       .then(res => res.json())
       .then(res => {
         return dispatch(setPhotos(res));
@@ -20,7 +22,7 @@ const Pictures = ({navigation}) => {
   };
   React.useEffect(() => {
     getPictures();
-  }, []);
+  }, [albumIndex]);
 
   const navigateToInfo = data => {
     navigation.navigate('Details', {data});
@@ -50,6 +52,17 @@ const Pictures = ({navigation}) => {
     photosList.map(obj => savedList.find(o => o.id === obj.id) || obj),
     inputText,
   );
+  const handleLoadMore = () => {
+    setAlbumIndex(prevState => prevState + 1);
+    setIsLoading(false);
+  };
+  const footerList = () => {
+    return (
+      <View>
+        <ActivityIndicator loading={isLoading} size="large" color="##000000" />
+      </View>
+    );
+  };
 
   return (
     <View>
@@ -59,6 +72,8 @@ const Pictures = ({navigation}) => {
         onRefresh={getPictures}
         addItem={addItem}
         onNavigate={navigateToInfo}
+        handleLoadMore={handleLoadMore}
+        listFooter={footerList}
       />
     </View>
   );

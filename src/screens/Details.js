@@ -21,7 +21,7 @@ const Details = ({route, navigation}) => {
     }
   };
 
-  console.log(visIcon.length);
+  //console.log(visIcon.length);
   return (
     <View style={style.detailsContainer}>
       <Image

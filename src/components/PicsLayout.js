@@ -3,7 +3,7 @@ import {FlatList, StyleSheet} from 'react-native';
 import {ListItem, Avatar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const PicsLayout = ({data, addItem, onRefresh, onNavigate}) => {
+const PicsLayout = ({data, addItem, onRefresh, onNavigate, handleLoadMore, listFooter}) => {
   return (
     <FlatList
       data={data}
@@ -27,6 +27,8 @@ const PicsLayout = ({data, addItem, onRefresh, onNavigate}) => {
       keyExtractor={item => item.id}
       refreshing={false}
       onRefresh={onRefresh}
+      onEndReached={handleLoadMore}
+      ListFooterComponent={listFooter}
     />
   );
 };
