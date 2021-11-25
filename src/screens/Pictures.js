@@ -11,13 +11,13 @@ const Pictures = ({navigation}) => {
   const photosList = useSelector(state => state.list);
   const savedList = useSelector(state => state.likedPhotos);
   const [albumIndex, setAlbumIndex] = React.useState(1);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   console.log(albumIndex);
   const getPictures = () => {
     fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumIndex}`)
       .then(res => res.json())
       .then(res => {
-        return dispatch(setPhotos(res));
+        return dispatch(setPhotos(res)), setIsLoading(false);
       });
   };
   React.useEffect(() => {
@@ -53,13 +53,13 @@ const Pictures = ({navigation}) => {
     inputText,
   );
   const handleLoadMore = () => {
+    setIsLoading(true);
     setAlbumIndex(prevState => prevState + 1);
-    setIsLoading(false);
   };
   const footerList = () => {
     return (
       <View>
-        <ActivityIndicator loading={isLoading} size="large" color="##000000" />
+        <ActivityIndicator animating={isLoading} size="large" color="##000000" />
       </View>
     );
   };
