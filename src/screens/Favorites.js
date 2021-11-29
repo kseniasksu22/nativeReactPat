@@ -5,7 +5,7 @@ import {deleteFavorites} from '../redux/actions';
 import PicsLayout from '../components/PicsLayout';
 const Favorites = ({navigation}) => {
   const dispatch = useDispatch();
-  const savedPhotos = useSelector(state => state.likedPhotos);
+  const savedPhotos = useSelector(state => state.photos.likedPhotos);
 
   const removeItem = data => {
     let id = data.id;

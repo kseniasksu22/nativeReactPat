@@ -8,22 +8,29 @@ import Search from '../components/Search';
 const Pictures = ({navigation}) => {
   const [inputText, setInputText] = React.useState('');
   const dispatch = useDispatch();
-  const photosList = useSelector(state => state.list);
-  const savedList = useSelector(state => state.likedPhotos);
-  const [albumIndex, setAlbumIndex] = React.useState(1);
+  const photosList = useSelector(state => state.photos.list);
+  console.log(photosList);
+  const savedList = useSelector(state => state.photos.likedPhotos);
+  const [nextPage, setNextPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(false);
-  console.log(albumIndex);
+
   const getPictures = () => {
-    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumIndex}`)
+    console.log(nextPage, currentPage);
+    if (nextPage === currentPage) {
+      return null;
+    }
+    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${nextPage}`)
       .then(res => res.json())
       .then(res => {
-        return dispatch(setPhotos(res)), setIsLoading(false);
+        dispatch(setPhotos(res, photosList));
+        setCurrentPage(nextPage);
+        setIsLoading(false);
       });
   };
   React.useEffect(() => {
     getPictures();
-  }, [albumIndex]);
-
+  }, [nextPage]);
   const navigateToInfo = data => {
     navigation.navigate('Details', {data});
   };
@@ -54,7 +61,7 @@ const Pictures = ({navigation}) => {
   );
   const handleLoadMore = () => {
     setIsLoading(true);
-    setAlbumIndex(prevState => prevState + 1);
+    setNextPage(prevState => prevState + 1);
   };
   const footerList = () => {
     return (
@@ -78,6 +85,5 @@ const Pictures = ({navigation}) => {
     </View>
   );
 };
-//infinitstore
 
 export default Pictures;

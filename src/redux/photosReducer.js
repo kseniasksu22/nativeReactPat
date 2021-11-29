@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
     case 'SET_PHOTOS': {
       return {
         ...state,
-        list: action.payload,
+        list: [...action.payload],
       };
     }
 

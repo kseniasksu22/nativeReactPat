@@ -10,6 +10,7 @@ const Tab = createBottomTabNavigator();
 export default () => (
   <Tab.Navigator
     screenOptions={({route}) => ({
+      headerShown: false,
       tabBarIcon: ({color, size}) => {
         if (route.name === 'Favorites') {
           color = '#b62525';
@@ -27,7 +28,7 @@ export default () => (
         return <Icon name={icons[route.name]} color={color} size={size} />;
       },
     })}>
-    <Tab.Screen name="Pictures" component={Pictures} />
+    <Tab.Screen screenOptions={{header: 'none'}} name="Pictures" component={Pictures} />
 
     <Tab.Screen name="Favorites" component={Favorites} />
   </Tab.Navigator>

@@ -4,11 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {setFavorites, deleteFavorites} from '../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 
-const Details = ({route, navigation}) => {
-  console.log(navigation);
+const Details = ({route}) => {
   const dispatch = useDispatch();
   const item = route.params.data;
-  const savedList = useSelector(state => state.likedPhotos);
+  const savedList = useSelector(state => state.photos.likedPhotos);
   const visIcon = savedList.filter(el => el.id === item.id);
 
   const addItem = data => {

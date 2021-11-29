@@ -6,7 +6,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {persistor} from './src/redux/store';
 import store from './src/redux/store';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import StackNavigator from './src/navigation/StackNavigator';
+import StackNavigator from './src/navigation/MainNavigator';
 
 Icon.loadFont();
 
