@@ -4,6 +4,7 @@ import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 const Stack = createStackNavigator();
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 const StackNav = () => {
   return (
     <Stack.Navigator>

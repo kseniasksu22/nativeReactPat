@@ -1,25 +1,68 @@
 import React from 'react';
-
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import RootScreen from '../screens/RootScreen';
 import Login from '../screens/Login';
+import Register from '../screens/Register';
 import {useSelector} from 'react-redux';
 import DrawerUserNavigator from './DrawerNavigator';
-import {createStackNavigator} from '@react-navigation/stack';
-const Stack = createStackNavigator();
-const StackNavigator = () => {
-  const isLogged = useSelector(state => state.userInfo.isLogged);
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+const Stack = createStackNavigator();
+const MainNavigator = () => {
+  const isLogged = useSelector(state => state.userInfo.user);
   return (
     <NavigationContainer>
-      {isLogged ? (
+      {isLogged.username ? (
         <DrawerUserNavigator />
       ) : (
         <Stack.Navigator>
-          <Stack.Screen name="TabNavigator" component={Login} options={{headerShown: false}} />
+          <Stack.Screen name="TabNavigator" component={RootScreen} options={{headerShown: false}} />
+          <Stack.Screen
+            options={({navigation, route}) => ({
+              ...TransitionPresets.ModalSlideFromBottomIOS,
+              headerStyle: {
+                backgroundColor: '#000',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerLeft: () => (
+                <Icon name="close" onPress={() => navigation.goBack()} color="white" size={35} />
+              ),
+            })}
+            name="Login"
+            component={Login}
+            //options={{headerShown: false}}
+          />
+          <Stack.Screen
+            options={({navigation, route}) => ({
+              ...TransitionPresets.ModalSlideFromBottomIOS,
+              headerStyle: {
+                backgroundColor: '#000',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerLeft: () => (
+                <Icon
+                  name="chevron-left"
+                  onPress={() => navigation.goBack()}
+                  color="white"
+                  size={40}
+                />
+              ),
+            })}
+            name="Register"
+            component={Register}
+            //options={{headerShown: false}}
+          />
         </Stack.Navigator>
       )}
     </NavigationContainer>
   );
 };
 
-export default StackNavigator;
+export default MainNavigator;

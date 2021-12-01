@@ -2,7 +2,6 @@ import {SET_PHOTOS} from './photosReducer';
 import {SET_FAVORITES} from './photosReducer';
 import {REMOVE_FROM_FAVORITES} from './photosReducer';
 import {LOGIN} from './userReducer';
-import {LOGGED} from './userReducer';
 
 export const setPhotos = (photos, list) => {
   const allPhotos = [...list, ...photos];
@@ -29,13 +28,6 @@ export const deleteFavorites = id => {
 export const login = data => {
   return {
     type: LOGIN,
-    payload: data,
-  };
-};
-
-export const logState = data => {
-  return {
-    type: LOGGED,
     payload: data,
   };
 };
