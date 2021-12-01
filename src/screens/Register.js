@@ -29,7 +29,8 @@ const Register = () => {
             fontSize: 24,
           }}
           onChangeText={text => setTextInut(text)}
-          placeholder="email adress"
+          placeholder="Email adress"
+          placeholderTextColor={'grey'}
         />
         <Icon
           onPress={() => {

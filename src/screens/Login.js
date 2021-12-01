@@ -40,15 +40,18 @@ const Login = () => {
       <TextInput
         style={styles.login__Input}
         label="Email"
-        placeholder="type your e-mail here"
+        placeholder="
+        Type your e-mail here"
         onChangeText={text => setEmail(text)}
+        placeholderTextColor={'grey'}
       />
       <Text style={styles.login__InputText}>Pass your password</Text>
       <View style={styles.login__inputWrapper}>
         <TextInput
           style={styles.login__Input}
           label="password"
-          placeholder="type your password here"
+          placeholder="Type your password here"
+          placeholderTextColor={'grey'}
           secureTextEntry={secure}
           maxLength={20}
           onChangeText={text => setPassword(text)}
@@ -122,6 +125,7 @@ const styles = StyleSheet.create({
   },
   login__buttonLog: {
     backgroundColor: 'red',
+    marginTop: 20,
   },
   login__Input: {
     alignSelf: 'stretch',
