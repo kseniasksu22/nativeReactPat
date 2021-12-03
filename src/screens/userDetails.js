@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../redux/actions';
 
 const UserDetails = ({route}) => {
-  console.log(route.params, 'lol');
+  // console.log(route.params, 'lol');
   const dispatch = useDispatch();
   const userData = useSelector(state => state.userInfo.user);
 

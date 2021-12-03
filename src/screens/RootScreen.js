@@ -2,8 +2,14 @@ import React from 'react';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AnimatedList from '../components/AnimatedList';
+//import Loadable from 'react-loadable';
 
 const RootScreen = ({navigation}) => {
+  //const LoadableComponent = Loadable({
+  //loader: () => import('../components/AnimatedList'),
+  // loading: () => <Text>jbjjj</Text>,
+  //});
+
   return (
     <View style={styles.rootScreen}>
       <AnimatedList />
@@ -20,7 +26,7 @@ const RootScreen = ({navigation}) => {
           <Text style={styles.rootScreen__buttonText}>Login</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate('Register')}
+          onPress={() => navigation.navigate('RegisterEmail')}
           style={styles.rootScreen__button}>
           <Text style={styles.rootScreen__buttonText}>Register</Text>
         </Pressable>

@@ -15,7 +15,7 @@ const Pictures = ({navigation}) => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const getPictures = () => {
-    console.log(nextPage, currentPage);
+    // console.log(nextPage, currentPage);
     if (nextPage === currentPage) {
       return null;
     }

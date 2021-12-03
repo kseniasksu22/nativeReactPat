@@ -70,9 +70,10 @@ const Login = () => {
         onPress={() => getUserData(email, password)}>
         <Text style={styles.login__buttonText}>Login</Text>
       </Pressable>
-      <Text>
-        hghgfhgf hg fgjfh gfhghfg ldklkdl jkdjjkjd hjdhjdhjd fhjj hjfhfhfjh jhfhfjhjhfjfhj
+      <Text style={styles.login__privacyText}>
+        By continue you accepting Pinterest`s privacy policy. (Terms of service and privacy policy)
       </Text>
+      <Text style={styles.login__passwordReset}>Forgot your password?</Text>
     </View>
   );
 };
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   login: {
     padding: 10,
@@ -131,7 +133,19 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     padding: 10,
     color: 'white',
-    fontSize: 20,
+    fontSize: 26,
+    fontWeight: 'bold',
+  },
+  login__privacyText: {
+    color: 'white',
+    textAlign: 'center',
+    paddingTop: 5,
+    paddingBottom: 30,
+  },
+  login__passwordReset: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 
