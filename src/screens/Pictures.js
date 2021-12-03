@@ -9,14 +9,13 @@ const Pictures = ({navigation}) => {
   const [inputText, setInputText] = React.useState('');
   const dispatch = useDispatch();
   const photosList = useSelector(state => state.photos.list);
-  console.log(photosList);
   const savedList = useSelector(state => state.photos.likedPhotos);
   const [nextPage, setNextPage] = React.useState(1);
   const [currentPage, setCurrentPage] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(false);
 
   const getPictures = () => {
-    console.log(nextPage, currentPage);
+    // console.log(nextPage, currentPage);
     if (nextPage === currentPage) {
       return null;
     }
@@ -31,6 +30,7 @@ const Pictures = ({navigation}) => {
   React.useEffect(() => {
     getPictures();
   }, [nextPage]);
+
   const navigateToInfo = data => {
     navigation.navigate('Details', {data});
   };

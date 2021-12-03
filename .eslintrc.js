@@ -4,5 +4,6 @@ module.exports = {
   rules: {
     'react-hooks/exhaustive-deps': 'off',
     'no-sequences': 'off',
+    'react-native/no-inline-styles': 'off',
   },
 };

@@ -1,11 +1,14 @@
 import React from 'react';
-import {Pressable, Text, View, StyleSheet} from 'react-native';
+import {Pressable, Text, View, StyleSheet, AsyncStorage} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {useSelector, useDispatch} from 'react-redux';
-import {logState} from '../redux/actions';
-const UserDetails = () => {
-  const userData = useSelector(state => state.userInfo.user);
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../redux/actions';
+
+const UserDetails = ({route}) => {
+  // console.log(route.params, 'lol');
   const dispatch = useDispatch();
+  const userData = useSelector(state => state.userInfo.user);
+
   return (
     <View style={styles.userDetails}>
       <Icon name="person" size={30} color={'#809DA6'} />
@@ -16,7 +19,11 @@ const UserDetails = () => {
         <Text>LastName: {userData.lastName}</Text>
         <Text>Age: {userData.age}</Text>
       </View>
-      <Pressable style={styles.userDetails__button} onPress={() => dispatch(logState(false))}>
+      <Pressable
+        style={styles.userDetails__button}
+        onPress={() => {
+          dispatch(login({}));
+        }}>
         <Text style={styles.userDetails__logotText}>Log Out</Text>
         <Icon name="logout" size={20} color="white" />
       </Pressable>

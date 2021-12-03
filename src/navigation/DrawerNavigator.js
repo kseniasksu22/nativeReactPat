@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 
 function DrawerUserNavigator() {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator initialRouteName="DrawerUserNavigator">
       <Drawer.Screen
         name="Pictures"
         component={StackNav}
@@ -19,7 +19,7 @@ function DrawerUserNavigator() {
           }
         }}
       />
-      <Drawer.Screen name="User" component={UserDetails} />
+      <Drawer.Screen name="UserDetails" component={UserDetails} />
     </Drawer.Navigator>
   );
 }
